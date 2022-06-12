@@ -1,4 +1,4 @@
-# Taxi Service
+# Cinema App
 ![taxi](images/introducing.jpg)
 
 ## Contents
@@ -11,13 +11,13 @@
 
 <a name="Overview"></a>
 ## Overview
-Cinema-app is a web application where registered user clients can purchase tickets for a movie. Also it gives a lot of toolls for Admin user to perform CRUD operations to Movies, Cinema Halls and Movie Sessions.
-<br/>Service include such tools as:
+Cinema-app is a web application where registered user clients can purchase tickets for a movie. Also, it gives a lot of toolls for Admin user to perform CRUD operations to Movies, Cinema Halls and Movie Sessions.
+<br/>Service includes such tools as:
 <br/> - Email validation
-<br/> - Password hashing with salt (SHA512) 
+<br/> - Password hashing (BCrypt) 
 <a name="Use-cases"></a>
 ## Use cases
-When you enter the application website you enter like a guest and you have access only to these actions:
+When you enter the application website you enter like a guest, and you have access only to these actions:
 * Login
 * Register as a new user
 
