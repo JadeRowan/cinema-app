@@ -15,6 +15,7 @@ Cinema-app is a web application where registered user clients can purchase ticke
 <br><br>Service includes such tools as:
 - Email validation
 - Password hashing (BCrypt)
+
 ## Use cases
 When you enter the application website you enter like a guest, and you have access only to these actions:
 * Login
@@ -77,10 +78,10 @@ Table relations
 
 <a name="Application-startup"></a>
 ## Application startup
-
 1. Install MySQL
 1. Load dependencies which are described in `pom.xml`
 1. Change `username`, `password`, and `URL` values in the `resources/db.properties` file to open a connection with your database
 1. Configure Apache Tomcat (v9.0.50) for your IDE
 1. Launch the application and start using it at `http://localhost:%your_port%`
 1. Interact with end points using <a href="https://www.postman.com">Postman</a>
+
