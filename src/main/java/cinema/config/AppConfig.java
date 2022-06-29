@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@PropertySource("classpath:db.properties")
+@PropertySource("classpath:dev.properties")
 @ComponentScan(basePackages = "cinema")
 public class AppConfig {
     private final Environment environment;
@@ -41,6 +41,9 @@ public class AppConfig {
         properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
         properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.use_sql_comments",
+                environment.getProperty("hibernate.use_sql_comments"));
+        properties.put("hibernate.format_sql", environment.getProperty("hibernate.format_sql"));
 
         factoryBean.setHibernateProperties(properties);
         factoryBean.setPackagesToScan("cinema");
