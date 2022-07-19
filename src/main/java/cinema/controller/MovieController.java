@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller responsible for CRUD operations with Movie entity
+ */
 @RestController
 @RequestMapping("/movies")
 public class MovieController {
@@ -30,12 +33,24 @@ public class MovieController {
         this.movieResponseDtoMapper = movieResponseDtoMapper;
     }
 
+    /**
+     * Creates and adds new movie using service method
+     * Returns dto of added movie
+     *
+     * @param requestDto object with info for movie creation
+     * @return           dto of added movie
+     */
     @PostMapping
     public MovieResponseDto add(@RequestBody @Valid MovieRequestDto requestDto) {
         Movie movie = movieService.add(movieRequestDtoMapper.mapToModel(requestDto));
         return movieResponseDtoMapper.mapToDto(movie);
     }
 
+    /**
+     * Returns all existing movies
+     *
+     * @return List of dto of existing movies
+     */
     @GetMapping
     public List<MovieResponseDto> getAll() {
         return movieService.getAll()

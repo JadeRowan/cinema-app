@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller responsible for new user registration
+ */
 @RestController
 public class AuthenticationController {
     private final AuthenticationService authService;
@@ -21,6 +24,12 @@ public class AuthenticationController {
         this.userDtoResponseMapper = userDtoResponseMapper;
     }
 
+    /**
+     * Register new user by calling register method on AuthService and returns DTO of created user
+     *
+     * @param requestDto object with user credentials for registration
+     * @return           DTO of created user
+     */
     @PostMapping("/register")
     public UserResponseDto register(@RequestBody @Valid UserRequestDto requestDto) {
         User user = authService.register(requestDto.getEmail(), requestDto.getPassword());
