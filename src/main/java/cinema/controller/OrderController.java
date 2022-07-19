@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller responsible for CRUD operations with Order entity
+ */
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
@@ -34,6 +37,12 @@ public class OrderController {
         this.orderResponseDtoMapper = orderResponseDtoMapper;
     }
 
+    /**
+     * Completes order using service method of user which linked with given Authentication object
+     *
+     * @param auth    Authentication object of user which is trying complete order
+     * @return        dto of completed order
+     */
     @PostMapping("/complete")
     public OrderResponseDto completeOrder(Authentication auth) {
         String email = auth.getName();
@@ -43,6 +52,12 @@ public class OrderController {
         return orderResponseDtoMapper.mapToDto(orderService.completeOrder(cart));
     }
 
+    /**
+     * Returns orders completed by specific user
+     *
+     * @param auth    Authentication object of needed user
+     * @return        list of orderDto-s which was completed by given user
+     */
     @GetMapping
     public List<OrderResponseDto> getOrderHistory(Authentication auth) {
         String email = auth.getName();

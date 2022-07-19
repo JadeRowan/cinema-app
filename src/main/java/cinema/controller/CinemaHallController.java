@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller responsible for CRUD operations with Cinema Hall entity
+ */
 @RestController
 @RequestMapping("/cinema-halls")
 public class CinemaHallController {
@@ -30,6 +33,13 @@ public class CinemaHallController {
         this.cinemaHallResponseDtoMapper = cinemaHallResponseDtoMapper;
     }
 
+    /**
+     * Creates and adds new cinema hall using service method
+     * Returns dto of added cinema hall
+     *
+     * @param requestDto object with info for cinema hall creation
+     * @return           dto of added cinema hall
+     */
     @PostMapping
     public CinemaHallResponseDto add(@RequestBody @Valid CinemaHallRequestDto requestDto) {
         CinemaHall cinemaHall = cinemaHallService.add(
@@ -37,6 +47,11 @@ public class CinemaHallController {
         return cinemaHallResponseDtoMapper.mapToDto(cinemaHall);
     }
 
+    /**
+     * Returns all existing cinema halls
+     *
+     * @return List of dto of existing cinema halls
+     */
     @GetMapping
     public List<CinemaHallResponseDto> getAll() {
         return cinemaHallService.getAll()

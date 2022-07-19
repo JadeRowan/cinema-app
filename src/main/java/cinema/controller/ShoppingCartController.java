@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller responsible for CRUD operations with Shopping Cart entity
+ */
 @RestController
 @RequestMapping("/shopping-carts")
 public class ShoppingCartController {
@@ -36,6 +39,13 @@ public class ShoppingCartController {
         this.shoppingCartResponseDtoMapper = shoppingCartResponseDtoMapper;
     }
 
+    /**
+     * Creates and adds ticket object in shopping cart of user
+     * using service methods
+     *
+     * @param auth             Authentication object of needed user
+     * @param movieSessionId   id of movie session which contains information for ticket
+     */
     @PutMapping("/movie-sessions")
     public void addToCart(Authentication auth, @RequestParam Long movieSessionId) {
         UserDetails details = (UserDetails) auth.getPrincipal();
@@ -46,6 +56,12 @@ public class ShoppingCartController {
         shoppingCartService.addSession(movieSession, user);
     }
 
+    /**
+     * Returns shopping cart dto of specific user
+     *
+     * @param auth    Authentication object of needed user
+     * @return        shopping cart dto
+     */
     @GetMapping("/by-user")
     public ShoppingCartResponseDto getByUser(Authentication auth) {
         UserDetails details = (UserDetails) auth.getPrincipal();

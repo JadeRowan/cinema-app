@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller responsible for CRUD operations with Movie Session entity
+ */
 @RestController
 @RequestMapping("/movie-sessions")
 public class MovieSessionController {
@@ -40,6 +43,13 @@ public class MovieSessionController {
         this.movieSessionResponseDtoMapper = movieSessionResponseDtoMapper;
     }
 
+    /**
+     * Creates and adds new movie session using service method
+     * Returns dto of added movie session
+     *
+     * @param requestDto   object with info for movie session creation
+     * @return             dto of added movie session
+     */
     @PostMapping
     public MovieSessionResponseDto add(@RequestBody @Valid MovieSessionRequestDto requestDto) {
         MovieSession movieSession = movieSessionRequestDtoMapper.mapToModel(requestDto);
@@ -47,6 +57,14 @@ public class MovieSessionController {
         return movieSessionResponseDtoMapper.mapToDto(movieSession);
     }
 
+    /**
+     * Returns all existing movie sessions on specific movie on specific date by
+     * using service method
+     *
+     * @param movieId  id of specific movie for movie sessions
+     * @param date     id of specific data for movie sessions
+     * @return         list of dto of existing movie sessions
+     */
     @GetMapping("/available")
     public List<MovieSessionResponseDto> getAllAvailable(@RequestParam Long movieId,
                                                 @RequestParam

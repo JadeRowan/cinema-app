@@ -14,8 +14,23 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+/**
+ *  Class is responsible for catching and making report about exceptions
+ *  caused by invalid dto input during validation process.
+ */
 @ControllerAdvice
 public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
+    /**
+     * Method that handle and analyze exceptions which couses by not valid arguments
+     * Creates ResponseEntity object with description of exception source.
+     *
+     * @param ex        exception object which used in ResponseEntity creation
+     * @param headers   headers for response entity
+     * @param status    status for response entity
+     * @param request   request for response entity
+     * @return          response entity with exception description and causes
+     */
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex,
